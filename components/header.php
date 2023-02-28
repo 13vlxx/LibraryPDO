@@ -113,17 +113,24 @@
         <a href="accueil.php">Accueil</a>
         <select onchange="la(this.value)">
           <option disabled selected>Livres</option>
-          <option value="livres/form.php">Ajouter un livre</option>
+          <?php
+          if ($_SESSION['isAdmin'] === 1) {
+            echo '<option value="livres/form.php">Ajouter un livre</option>';
+          }
+          ?>
           <option value="livres/affiche_livres.php">Afficher les livres</option>
         </select>
-        <select onchange="la(this.value)">
-          <option disabled selected>Fournisseurs</option>
-          <option value="fournisseurs/form_fournisseurs.php">Ajouter un fournisseur</option>
-          <option value="fournisseurs/affiche_fournisseurs.php">Afficher les fournisseurs</option>
-          <option value="fournisseurs/lister_rsociale.php">Lister par Raison sociale</option>
-          <option value="fournisseurs/lister_localite.php">Lister par Localité</option>
-          <option value="fournisseurs/lister_pays.php">Lister par Pays</option>
-        </select>
+        <?php if ($_SESSION['isAdmin'] === 1) {
+          echo '<select onchange="la(this.value)">';
+          echo '<option disabled selected>Fournisseurs</option>';
+          echo '<option value="fournisseurs/form_fournisseurs.php">Ajouter un fournisseur</option>';
+          echo '<option value="fournisseurs/affiche_fournisseurs.php">Afficher les fournisseurs</option>';
+          echo '<option value="fournisseurs/lister_rsociale.php">Lister par Raison sociale</option>';
+          echo '<option value="fournisseurs/lister_localite.php">Lister par Localité</option>';
+          echo '<option value="fournisseurs/lister_pays.php">Lister par Pays</option>';
+          echo '</select>';
+        }
+        ?>
       </div>
       <script>
         function la(src) {
@@ -133,7 +140,11 @@
     </div>
     <div class="right">
       <div id="nom">
-        <?php echo "Bonjour " . $_SESSION['nom'] . ' ' . $_SESSION['prenom']; ?>
+        <?php echo "Bonjour " . $_SESSION['nom'] . ' ' . $_SESSION['prenom'] . ' ';
+        if ($_SESSION['isAdmin'] === 1) {
+          echo $_SESSION['isAdmin'];
+        }
+        ?>
       </div>
       <i class="fa-sharp fa-solid fa-bars hamburger"></i>
       <i class="fa-sharp fa-solid fa-xmark fermer"></i>

@@ -30,9 +30,11 @@ if ($stmt->rowCount() > 0) {
     $donnees = $stmt->fetch();
     $nom = $donnees[1];
     $prenom = $donnees[2];
+    $isAdmin = $donnees[5];
     print_r($donnees);
     $_SESSION['nom'] = $nom;
     $_SESSION['prenom'] = $prenom;
+    $_SESSION['isAdmin'] = $isAdmin;
     header("Location: ../accueil.php");
 } else {
     // Show an error
