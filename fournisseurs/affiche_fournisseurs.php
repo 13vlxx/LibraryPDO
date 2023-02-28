@@ -89,6 +89,9 @@
         <select onchange="la(this.value)">
             <option disabled selected>Fournisseurs</option>
             <option value="../fournisseurs/form_fournisseurs.php">Ajouter un fournisseur</option>
+            <option value="lister_rsociale.php">Lister par Raison sociale</option>
+            <option value="lister_localite.php">Lister par Localité</option>
+            <option value="lister_pays.php">Lister par Pays</option>
         </select>
         <script>
             function la(src) {
